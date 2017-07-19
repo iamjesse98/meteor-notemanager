@@ -1,0 +1,71 @@
+<head>
+  <title>notemanager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+</head>
+
+<body>
+
+    <nav class="red darken-1">
+        <div class="nav-wrapper container">
+          <span class="brand-logo">NoteManager</span>
+          <ul id="nav-mobile" class="right">
+            {{ #if currentUser }}
+              <li class="nav-item">
+                <a class="btn-floating waves-effect waves-light btn red darken-4" href="#addModal" onclick="$('.modal').openModal()">+</a>
+              </li>
+            {{ /if }}
+              <li class="nav-item">
+                {{> loginButtons }}
+              </li>
+          </ul>
+        </div>
+
+    </nav>
+
+  <div class="container">
+
+    <h3>Latest Notes</h3>
+
+    {{ #if currentUser }}
+
+    <ul class="collection">
+      {{ #each notes }}
+        {{> note}}
+      {{ /each }}
+    </ul>
+
+    {{ else }}
+
+    <p>Please Log In To Manage Notes...</p>
+
+    {{ /if }}
+
+  </div>
+
+  {{> add}}
+
+  <script>
+
+  </script>
+
+</body>
+
+<template name="note">
+  <li class="collection-item">
+    <strong>{{ uname }} wrote: </strong> {{ text }}
+    <a href="#" class="delete-note secondary-content">&cross;</a>
+  </li>
+</template>
+
+<template name="add">
+
+  <div id="addModal" class="modal">
+  <div class="modal-content">
+    <h3>Add Note</h3>
+    <form class="add-form">
+      <input type="text" name="text" placeholder="Add Note...">
+    </form>
+  </div>
+</div>
+
+</template>

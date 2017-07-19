@@ -1,0 +1,4 @@
+/* CSS declarations go here */
+@media(max-width: 700px) {
+  .brand-logo { display: none !important; }
+}
